@@ -1,0 +1,12 @@
+server:
+    port: ${PORT:7090}
+spring:
+    application:
+        name: API-GATEWAY-SERVICE
+    cloud:
+        gateway:
+            routes:
+                -   id: APPLE-SERVICE-1
+                    uri: http://localhost:7071
+                    predicates:
+                        - Path= /api/**
