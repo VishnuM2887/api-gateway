@@ -9,4 +9,16 @@ spring:
                 -   id: APPLE-SERVICE-1
                     uri: http://localhost:7071
                     predicates:
-                        - Path= /api/**
+                        - Path= /apple/api/v1/mobile**
+                    filters:
+                        - RewritePath=/(?<segment>.*)/api/v1/mobile, /api/v1/mobile
+                -   id: ONEPLUS-SERVICE-1
+                    uri: http://localhost:7072
+                    predicates:
+                        - Path= /oneplus/api/v1/mobile**
+                    filters:
+                        - RewritePath=/(?<segment>.*)/api/v1/mobile, /api/v1/mobile
+
+# logging:
+#     level:
+#         org.springframework.cloud.gateway: DEBUG
